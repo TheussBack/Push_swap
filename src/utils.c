@@ -6,7 +6,7 @@
 /*   By: hrobin <hrobin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:19:51 by hrobin            #+#    #+#             */
-/*   Updated: 2023/02/22 20:41:31 by hrobin           ###   ########.fr       */
+/*   Updated: 2023/02/27 18:55:03 by hrobin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ t_list	*ft_new_lst(long long int content)
 	return (new);
 }
 
-int	ft_atoi(const char *nptr)
+int	ft_atoi_overflow(const char *nptr, int *error_code)
 {
 	size_t	i;
 	int		sign;
-	int		result;
+	long long int		result;
 
 	i = 0;
 	sign = 1;
@@ -63,6 +63,7 @@ int	ft_atoi(const char *nptr)
 		result = result * 10 + (nptr[i] - '0');
 		i++;
 	}
+	*error_code = ft_manage_error(sign * result);
 	return (sign * result);
 }
 
@@ -75,20 +76,4 @@ t_list	*ft_lstlast(t_list *lst)
 		lst = lst->next;
 	}
 	return (lst);
-}
-
-int	is_digit(char *av)
-{
-	int	i;
-
-	i = -1;
-	if (av[0] == '-')
-		i = 0;
-	while (av[++i])
-		if (!(av[i] >= '0' && av[i] <= '9'))
-			return (1);
-	// if (i >= 10 && (ft_atoi(av) > 2147483647
-	// 		|| ft_atoi(av) < -2147483648))
-	// 	return (0);
-	return (0);
 }
