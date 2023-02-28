@@ -6,7 +6,7 @@
 /*   By: hrobin <hrobin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 20:30:36 by hrobin            #+#    #+#             */
-/*   Updated: 2023/02/27 19:31:25 by hrobin           ###   ########.fr       */
+/*   Updated: 2023/02/28 18:47:46 by hrobin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ int main (int ac, char **av)
 	if (ft_parse(ac, av))
 		exit_fail("Error");
 	stack_a = ft_fill_stack(ac, av);
+	sa(&stack_a);
 	ft_print_one_stack(stack_a, 'a');
 	return (0);
 	// while (stack_a)

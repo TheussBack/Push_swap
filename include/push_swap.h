@@ -6,7 +6,7 @@
 /*   By: hrobin <hrobin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:45:15 by hrobin            #+#    #+#             */
-/*   Updated: 2023/02/27 19:17:56 by hrobin           ###   ########.fr       */
+/*   Updated: 2023/02/28 19:24:06 by hrobin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ typedef struct s_list
 	long long int	content;
 	struct s_list *next;
 }					t_list;
+
+//actions
+
+void	sa(t_list **a_stack);
+void	sb(t_list **b_stack);
+void	ss(t_list **a_stack, t_list **b_stack);
 
 //parsing
 
