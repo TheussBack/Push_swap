@@ -6,7 +6,7 @@
 /*   By: hrobin <hrobin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 20:30:36 by hrobin            #+#    #+#             */
-/*   Updated: 2023/02/28 18:47:46 by hrobin           ###   ########.fr       */
+/*   Updated: 2023/03/01 19:18:47 by hrobin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	ft_parse(int ac, char **av)
 			exit_fail("Double");
 		i++;
 	}
+	free_tab(av);
 	return (0);
 }
 
@@ -82,32 +83,66 @@ t_list	*ft_fill_stack(int ac, char **av)
 	return (a_stack);
 }
 
-void    ft_print_one_stack(t_list *stack, char stack_name)
-{
-    t_list    *stack_cpy;
+// void    ft_print_one_stack(t_list *stack, char stack_name)
+// {
+//     t_list    *stack_cpy;
 
-    stack_cpy = stack;
-    printf("%c_stack\n", stack_name);
-    while (stack_cpy != NULL)
+//     stack_cpy = stack;
+//     printf("%c_stack\n", stack_name);
+//     while (stack_cpy != NULL)
+//     {
+//     	printf("%lld\n", stack_cpy->content);
+//         stack_cpy = stack_cpy->next;
+//     }
+// }
+
+void    print_stacks(t_list *a_stack, t_list *b_stack)
+{
+    printf("__________________________________________");
+    printf("________________________________________\t\t\t\n\n");
+    printf("a_stack\t\t\tb_stack\n");
+    while (a_stack != NULL || b_stack != NULL)
     {
-    	printf("%lld\n", stack_cpy->content);
-        stack_cpy = stack_cpy->next;
+        if (a_stack != NULL)
+        {
+            printf("%lld\t\t\t", a_stack->content);
+            a_stack = a_stack->next;
+        }
+        else
+            printf("\t\t\t\t\t\t");
+        if (b_stack != NULL)
+        {
+            printf("%lld\t\t\t", b_stack->content);
+            b_stack = b_stack->next;
+        }
+        else
+            printf("\t\t\t\t\t\t");
+        printf("\n");
     }
+    printf("__________________________________________");
+    printf("________________________________________\t\t\t\n\n");
 }
+
 
 int main (int ac, char **av)
 {
 	t_list	*stack_a;
 	// int	i;
-	// t_list	*stack_b;
+	t_list	*stack_b;
 	// i = 0;
 	stack_a = NULL;
-	// stack_b = NULL;
+	stack_b = NULL;
 	if (ft_parse(ac, av))
 		exit_fail("Error");
 	stack_a = ft_fill_stack(ac, av);
+	pb(&stack_a, &stack_b);
+	pb(&stack_a, &stack_b);
+	pb(&stack_a, &stack_b);
+	pb(&stack_a, &stack_b);
 	sa(&stack_a);
-	ft_print_one_stack(stack_a, 'a');
+	pa(&stack_a, &stack_b);
+	print_stacks(stack_a, stack_b);
+
 	return (0);
 	// while (stack_a)
 	// {

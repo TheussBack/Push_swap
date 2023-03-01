@@ -1,55 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrobin <hrobin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 15:31:38 by hrobin            #+#    #+#             */
-/*   Updated: 2023/03/01 16:38:52 by hrobin           ###   ########.fr       */
+/*   Created: 2023/03/01 18:27:01 by hrobin            #+#    #+#             */
+/*   Updated: 2023/03/01 19:09:05 by hrobin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_tab(char **tab)
+void	pa(t_list **a_stack, t_list **b_stack)
 {
-	int	i;
+	t_list	*tmp;
 
-	i = -1;
-	while (tab[++i])
-		free(tab[i]);
-	if (tab)
-		free(tab);
-}
-
-int	is_double(char **av, int nb, int i)
-{
-	i++;
-	while (av[i])
-	{
-		if (atoi(av[i]) == nb)
-			return(1);
-		i++;
-	}
-	return(0);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
+	if (!(*b_stack))
 		return ;
-	if (fd < 0)
-		return ;
-	while (s[i] != '\0')
-		write(fd, &s[i++], 1);
+	tmp = *b_stack;
+	*b_stack = (*b_stack)->next;
+	tmp->next = *a_stack;
+	*a_stack = tmp;
+	write (1, "pa\n", 3);
 }
 
-void	exit_fail(char *str)
+void	pb(t_list **a_stack, t_list **b_stack)
 {
-	ft_putstr_fd(str, STDOUT_FILENO);
-	exit(EXIT_FAILURE);
+	t_list	*tmp;
+
+	if (!(*a_stack))
+		return ;
+	tmp = *a_stack;
+	*a_stack = (*a_stack)->next;
+	tmp->next = *b_stack;
+	*b_stack = tmp;
+	write (1, "pb\n", 3);
 }

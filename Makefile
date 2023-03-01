@@ -6,7 +6,7 @@
 #    By: hrobin <hrobin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/09 14:19:48 by hrobin            #+#    #+#              #
-#    Updated: 2023/02/28 18:46:12 by hrobin           ###   ########.fr        #
+#    Updated: 2023/03/01 18:43:41 by hrobin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ SRCS        :=     \
 			split.c \
 			exit.c \
 			uttils2.c \
-			actions.c
+			actions.c \
+			actions2.c \
+			push.c
 
 
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
