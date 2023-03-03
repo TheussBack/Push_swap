@@ -6,7 +6,7 @@
 /*   By: hrobin <hrobin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:45:15 by hrobin            #+#    #+#             */
-/*   Updated: 2023/03/01 19:14:46 by hrobin           ###   ########.fr       */
+/*   Updated: 2023/03/03 05:40:24 by hrobin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_list
 {
 	long long int	content;
 	struct s_list *next;
+	int	index;
 }					t_list;
 
 //actions
@@ -80,5 +81,22 @@ void	ft_putstr_fd(char *s, int fd);
 void	exit_fail(char *str);
 int	is_double(char **av, int nb, int i);
 void	free_tab(char **tab);
+
+//sort_3
+
+void	sort_3(t_list **a_stack);
+int	find_highest_index(t_list *stack);
+void	sort_2(t_list **a_stack);
+
+//sort
+
+void	ft_sort(t_list **a_stack, t_list **b_stack, int stack_size);
+int	is_sorted(t_list *stack);
+int	get_stack_size(t_list	*stack);
+
+//get index
+
+void	ft_set_index(t_list **stack);
+t_list	*ft_get_next_min(t_list **stack);
 
 #endif

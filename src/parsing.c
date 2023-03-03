@@ -6,7 +6,7 @@
 /*   By: hrobin <hrobin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 20:30:36 by hrobin            #+#    #+#             */
-/*   Updated: 2023/03/01 19:18:47 by hrobin           ###   ########.fr       */
+/*   Updated: 2023/03/03 05:42:25 by hrobin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_parse(int ac, char **av)
 			exit_fail("Double");
 		i++;
 	}
-	free_tab(av);
+	// free_tab(av);
 	return (0);
 }
 
@@ -100,11 +100,12 @@ void    print_stacks(t_list *a_stack, t_list *b_stack)
 {
     printf("__________________________________________");
     printf("________________________________________\t\t\t\n\n");
-    printf("a_stack\t\t\tb_stack\n");
+    printf("index\t\t\ta_stack\t\t\tindex\t\t\tb_stack\n");
     while (a_stack != NULL || b_stack != NULL)
     {
         if (a_stack != NULL)
         {
+			printf("%d\t\t\t", a_stack->index);
             printf("%lld\t\t\t", a_stack->content);
             a_stack = a_stack->next;
         }
@@ -112,6 +113,7 @@ void    print_stacks(t_list *a_stack, t_list *b_stack)
             printf("\t\t\t\t\t\t");
         if (b_stack != NULL)
         {
+			printf("%d\t\t\t", b_stack->index);
             printf("%lld\t\t\t", b_stack->content);
             b_stack = b_stack->next;
         }
@@ -123,24 +125,23 @@ void    print_stacks(t_list *a_stack, t_list *b_stack)
     printf("________________________________________\t\t\t\n\n");
 }
 
-
 int main (int ac, char **av)
 {
 	t_list	*stack_a;
 	// int	i;
 	t_list	*stack_b;
+	int	stack_size;
 	// i = 0;
+	stack_size = 0;
 	stack_a = NULL;
 	stack_b = NULL;
 	if (ft_parse(ac, av))
 		exit_fail("Error");
 	stack_a = ft_fill_stack(ac, av);
-	pb(&stack_a, &stack_b);
-	pb(&stack_a, &stack_b);
-	pb(&stack_a, &stack_b);
-	pb(&stack_a, &stack_b);
-	sa(&stack_a);
-	pa(&stack_a, &stack_b);
+	ft_set_index(&stack_a);
+	stack_size = get_stack_size(stack_a);
+	ft_sort(&stack_a, &stack_b, stack_size);
+	sort_3(&stack_a);
 	print_stacks(stack_a, stack_b);
 
 	return (0);

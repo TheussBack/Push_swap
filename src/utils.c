@@ -6,7 +6,7 @@
 /*   By: hrobin <hrobin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:19:51 by hrobin            #+#    #+#             */
-/*   Updated: 2023/02/27 18:55:03 by hrobin           ###   ########.fr       */
+/*   Updated: 2023/03/03 04:33:11 by hrobin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_list	*ft_new_lst(long long int content)
 	if (!new)
 		return (0);
 	new->content = content;
+	new->index = -1;
 	new->next = NULL;
 	return (new);
 }
