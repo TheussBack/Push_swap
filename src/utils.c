@@ -3,44 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrobin <hrobin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:19:51 by hrobin            #+#    #+#             */
-/*   Updated: 2023/03/03 04:33:11 by hrobin           ###   ########.fr       */
+/*   Updated: 2023/03/09 23:22:30 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_add_back(t_list **lst, t_list *new)
-{
-	t_list	*blabla;
-
-	if (lst == NULL || new == NULL)
-		return ;
-	if (!*lst)
-	{
-		*lst = new;
-		return ;
-	}
-	else
-	{
-		blabla = ft_lstlast(*lst);
-		blabla->next = new;
-	}
-}
-t_list	*ft_new_lst(long long int content)
-{
-	t_list	*new;
-
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return (0);
-	new->content = content;
-	new->index = -1;
-	new->next = NULL;
-	return (new);
-}
 
 int	ft_atoi_overflow(const char *nptr, int *error_code)
 {
@@ -77,4 +47,17 @@ t_list	*ft_lstlast(t_list *lst)
 		lst = lst->next;
 	}
 	return (lst);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
+
+	i = 0;
+	if (!s)
+		return ;
+	if (fd < 0)
+		return ;
+	while (s[i] != '\0')
+		write(fd, &s[i++], 1);
 }

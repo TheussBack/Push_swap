@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hrobin <hrobin@student.42.fr>              +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/09 14:19:48 by hrobin            #+#    #+#              #
-#    Updated: 2023/03/03 05:44:56 by hrobin           ###   ########.fr        #
+#    Updated: 2023/03/09 23:31:28 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,11 @@ SRCS        :=     \
 			actions.c \
 			actions2.c \
 			push.c \
-			sort_3.c \
+			sort_short.c \
 			get_index.c \
-			sort.c
+			sort.c \
+			free.c \
+			main.c
 
 
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)

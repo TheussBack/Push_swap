@@ -3,24 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrobin <hrobin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 15:31:38 by hrobin            #+#    #+#             */
-/*   Updated: 2023/03/01 16:38:52 by hrobin           ###   ########.fr       */
+/*   Updated: 2023/03/09 23:34:54 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_tab(char **tab)
+void	exit_parse(char *str)
 {
-	int	i;
-
-	i = -1;
-	while (tab[++i])
-		free(tab[i]);
-	if (tab)
-		free(tab);
+	ft_putstr_fd(str, STDOUT_FILENO);
+	exit(EXIT_FAILURE);
 }
 
 int	is_double(char **av, int nb, int i)
@@ -35,21 +30,20 @@ int	is_double(char **av, int nb, int i)
 	return(0);
 }
 
-void	ft_putstr_fd(char *s, int fd)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return ;
-	if (fd < 0)
-		return ;
-	while (s[i] != '\0')
-		write(fd, &s[i++], 1);
-}
-
-void	exit_fail(char *str)
+void	ft_exit(char *str, t_list **a_stack, t_list **b_stack)
 {
 	ft_putstr_fd(str, STDOUT_FILENO);
+	ft_free_stack(a_stack);
+	ft_free_stack(b_stack);
 	exit(EXIT_FAILURE);
+}
+
+void	lst_destroy(t_list *list)
+{
+	if (list == NULL)
+		return ;
+	lst_destroy(list->next);
+	if (list->next != NULL)
+		free(list->next);
+	free(list);
 }
